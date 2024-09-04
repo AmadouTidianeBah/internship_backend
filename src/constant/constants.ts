@@ -1,10 +1,10 @@
-export enum Role {
+export enum UserRole {
     STUDENT = 'STUDENT',
     COMPANY = 'COMPANY',
     ADMIN = 'ADMIN'
 }
 
-export enum Status {
+export enum ApplicationStatus {
     PENDING = 'PENDING',
     ACCEPTED = 'ACCEPTED',
     REJECTED = 'REJECTED'
