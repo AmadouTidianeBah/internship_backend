@@ -3,6 +3,7 @@ import {ConfigModule} from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
+import { UsersModule } from './users/users.module';
 import JwtGuard from './guards/jwt.guard';
 
 @Module({
@@ -22,7 +23,8 @@ import JwtGuard from './guards/jwt.guard';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    AuthModule
+    AuthModule,
+    UsersModule
   ],
   controllers: [],
   providers: [
