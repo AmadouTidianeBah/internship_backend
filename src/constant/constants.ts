@@ -9,3 +9,5 @@ export enum ApplicationStatus {
     ACCEPTED = 'ACCEPTED',
     REJECTED = 'REJECTED'
 }
+
+export const salt = 10
