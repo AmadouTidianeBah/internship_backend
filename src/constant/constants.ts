@@ -1,5 +1,3 @@
-import bcrypt from 'bcrypt'
-
 export enum UserRole {
     STUDENT = 'STUDENT',
     COMPANY = 'COMPANY',
@@ -12,5 +10,4 @@ export enum ApplicationStatus {
     REJECTED = 'REJECTED'
 }
 
-const salt = 10
-export const saltGenerated = bcrypt.genSaltSync(salt)
+export const salt = 10
