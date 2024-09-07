@@ -24,7 +24,7 @@ export class UsersService {
     async findOne(id: string): Promise<any> {
         const findedProfile = await this.profileRepository.findOne({where: {user: {id}}, relations: ['user']})
 
-        if(!findedProfile) throw new NotFoundException("This user haven't profile")
+        if(!findedProfile) throw new NotFoundException("Profile not found")
 
         const {user: {password, ...userData}, ...profile} = findedProfile
 
