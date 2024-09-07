@@ -20,10 +20,10 @@ export default class InternshipEntity {
     @Column()
     title: string
 
-    @Column()
+    @Column({type: 'text'})
     description: string
 
-    @Column()
+    @Column({type: 'text'})
     requirements: string
 
     @Column()
