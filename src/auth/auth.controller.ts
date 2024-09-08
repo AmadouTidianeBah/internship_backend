@@ -4,11 +4,13 @@ import CreateAuthDto from './dto/createAuth.dto';
 import LocalGuard from '../guards/local.guard';
 import { Request } from 'express';
 import { SkipAuth } from 'src/decorators/skipAuth.decorator';
+import { SkipRole } from 'src/decorators/skipRole.decorator';
 
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
+    @SkipRole()
     @SkipAuth()
     @Post('register')
     async register(
@@ -17,6 +19,7 @@ export class AuthController {
         return await this.authService.register(createAuthDto)
     }
 
+    @SkipRole()
     @SkipAuth()
     @Post('login')
     @UseGuards(LocalGuard)

@@ -14,7 +14,7 @@ export default class ApplicationEntity {
     @ManyToOne(() => InternshipEntity, (internship) => internship.applications)
     internship: InternshipEntity
 
-    @Column({type: 'enum', enum: ApplicationStatus})
+    @Column({type: 'enum', enum: ApplicationStatus, default: ApplicationStatus.PENDING})
     status: ApplicationStatus
 
     @Column()
