@@ -7,11 +7,11 @@ import UpdateProfileDto from './dto/updateProfile.dto';
 import { Roles } from 'src/decorators/roles.decorator';
 import { UserRole } from 'src/constant/constants';
 
+@Roles(UserRole.STUDENT)
 @Controller('users')
 export class UsersController {
     constructor(private readonly userService: UsersService) {}
 
-    @Roles(UserRole.STUDENT, UserRole.ADMIN)
     @Post('profile')
     async create(
         @Req() req: Request,
@@ -29,8 +29,7 @@ export class UsersController {
 
         return await this.userService.findOne(user.id)
     }
-    
-    @Roles(UserRole.STUDENT, UserRole.ADMIN)
+
     @Put('profile')
     async update(
         @Req() req: Request,

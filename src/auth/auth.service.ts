@@ -1,11 +1,11 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import UserEntity from 'src/typeORM/entities/user.entity';
 import { Repository } from 'typeorm';
 import CreateAuthDto from './dto/createAuth.dto';
 import * as bcrypt from 'bcrypt'
 import LoginDto from './dto/login.dto';
-import { salt } from 'src/constant/constants';
+import { salt, UserRole } from 'src/constant/constants';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -22,6 +22,8 @@ export class AuthService {
         const findedUser = await this.userRepository.findOneBy({email: createAuthDto.email})
 
         if(findedUser) throw new ConflictException('This user exit, try another email')
+
+        if(createAuthDto.role === UserRole.ADMIN) throw new UnauthorizedException('Cannot create the account')
 
         const {password, ...userData} = createAuthDto
         const saltGenerated = await bcrypt.genSalt(salt)

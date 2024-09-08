@@ -8,6 +8,7 @@ import { CompanyModule } from './company/company.module';
 import { InternshipModule } from './internship/internship.module';
 import JwtGuard from './guards/jwt.guard';
 import { RolesGuard } from './guards/roles.guard';
+import { ApplicationModule } from './application/application.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { RolesGuard } from './guards/roles.guard';
     AuthModule,
     UsersModule,
     CompanyModule,
-    InternshipModule
+    InternshipModule,
+    ApplicationModule
   ],
   controllers: [],
   providers: [
